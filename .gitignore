@@ -1,0 +1,14 @@
+*.mp4
+*.mov
+*.m4v
+*.wav
+*.mp3
+raw/
+videos/
+*.cookies
+cookies*.txt
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+failed.csv
