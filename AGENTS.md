@@ -65,7 +65,7 @@ bash scripts/install.sh
 ### 6. 装快捷指令
 
 让用户在 iPhone 打开 README 里的快捷指令链接，点「添加快捷指令」。
-链接是 `ICLOUD_LINK_TODO` 说明维护者还没填，这时改用本仓库的 `shortcut/` 目录：
+链接打不开时，改用本仓库的 `shortcut/` 目录：
 
 ```bash
 python3 shortcut/build_shortcut.py
