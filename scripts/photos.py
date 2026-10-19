@@ -295,27 +295,28 @@ end tell
 
 
 def verify(albums) -> bool:
+    # tab-separated: album names contain "|" often enough to break naive splitting
     script = f'''
 tell application "Photos"
 	set out to ""
-	set out to out & "MAIN|" & (count of media items of album {as_str(MAIN_ALBUM)}) & linefeed
+	set out to out & "MAIN" & tab & (count of media items of album {as_str(MAIN_ALBUM)}) & linefeed
 	set f to folder {as_str(TOPIC_FOLDER)}
 	repeat with a in (every album of f)
-		set out to out & "TOPIC_ALBUM|" & (name of a) & "|" & (count of media items of a) & linefeed
+		set out to out & "TOPIC_ALBUM" & tab & (name of a) & tab & (count of media items of a) & linefeed
 	end repeat
 	repeat with sub in (every folder of f)
 		repeat with a in (every album of sub)
-			set out to out & "TOPIC_ALBUM|" & (name of a) & "|" & (count of media items of a) & linefeed
+			set out to out & "TOPIC_ALBUM" & tab & (name of a) & tab & (count of media items of a) & linefeed
 		end repeat
 		repeat with sub2 in (every folder of sub)
 			repeat with a in (every album of sub2)
-				set out to out & "TOPIC_ALBUM|" & (name of a) & "|" & (count of media items of a) & linefeed
+				set out to out & "TOPIC_ALBUM" & tab & (name of a) & tab & (count of media items of a) & linefeed
 			end repeat
 		end repeat
 	end repeat
 	set p to folder {as_str(PERSON_FOLDER)}
 	repeat with a in (every album of p)
-		set out to out & "PERSON_ALBUM|" & (name of a) & "|" & (count of media items of a) & linefeed
+		set out to out & "PERSON_ALBUM" & tab & (name of a) & tab & (count of media items of a) & linefeed
 	end repeat
 	return out
 end tell
@@ -324,7 +325,7 @@ end tell
     main_count = topic_total = person_total = 0
     topic_albums = person_albums = 0
     for line in raw.splitlines():
-        parts = line.split("|")
+        parts = line.split("	")
         if parts[0] == "MAIN" and len(parts) == 2:
             main_count = int(parts[1])
         elif parts[0] == "TOPIC_ALBUM" and len(parts) == 3:
