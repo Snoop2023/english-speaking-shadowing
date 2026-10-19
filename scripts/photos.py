@@ -14,8 +14,9 @@ Result (identical to the reference library):
 Ordering comes from each file's creation_time (2026-01-01T00:00:00Z + no
 seconds), because Photos always returns album contents sorted by date.
 
-Safety: nothing is ever deleted or edited in place. If either target folder
-already exists the script stops and leaves the decision to you.
+Safety: nothing is ever deleted or edited. No `delete` / `remove` AppleScript call exists
+in this script, and none should be added — cleanup is the user's job. If either target
+folder already exists the script stops and leaves the decision to you.
 
 Usage:
     python3 scripts/photos.py                 # import + build
