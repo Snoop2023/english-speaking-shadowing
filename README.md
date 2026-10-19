@@ -80,8 +80,8 @@ python3 scripts/download.py --from-local /path/to/01_videos_compatible
 
 `shortcut/英语随机刷.shortcut`：从「英语素材｜由浅入深｜001–198」里随机抽 10 条视频，快速查看，左右滑。
 
-- iCloud 链接：`ICLOUD_LINK_TODO`
-- 链接没填或者失效时，自己在 Mac 上生成、签名、导入：
+- iCloud 链接：https://www.icloud.com/shortcuts/02186a00c50946179e40b7def847a2ff
+- 链接失效时，自己在 Mac 上生成、签名、导入：
 
   ```bash
   python3 shortcut/build_shortcut.py
